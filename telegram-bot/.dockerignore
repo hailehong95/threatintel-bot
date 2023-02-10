@@ -1,0 +1,14 @@
+# Ignore files
+.env
+.env.example
+.gitignore
+.dockerignore
+Dockerfile
+README.md
+LICENSE
+docker-compose.yaml
+
+# Directories
+__pycache__/
+.idea/
+venv/

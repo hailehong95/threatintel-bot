@@ -1,0 +1,59 @@
+version: "3.8"
+services:
+  db:
+    restart: always
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - data:/var/lib/mysql
+
+  bot:
+    restart: always
+    image: threatintel-bot:1.0.0
+    container_name: threatintel-bot
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - CHAT_ID=${CHAT_ID}
+    build:
+      context: ./threatintel-bot
+      dockerfile: Dockerfile
+
+  cve_monitor:
+    restart: always
+    image: cve_monitor:1.0.0
+    container_name: cve_monitor
+    build:
+      context: ./threatintel-bot
+      dockerfile: Dockerfile
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - CHAT_ID=${CHAT_ID}
+
+  findomain:
+    restart: always
+    image: findomain:1.0.0
+    container_name: threatintel-bot
+    build:
+      context: ./threatintel-bot
+      dockerfile: Dockerfile
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - CHAT_ID=${CHAT_ID}
+
+  subfinder:
+    restart: always
+    image: subfinder:1.0.0
+    container_name: threatintel-bot
+    build:
+      context: ./threatintel-bot
+      dockerfile: Dockerfile
+    environment:
+      - BOT_TOKEN=${BOT_TOKEN}
+      - CHAT_ID=${CHAT_ID}
+
+volumes:
+  data:

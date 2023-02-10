@@ -1,0 +1,4 @@
+marshmallow==3.19.0
+python-dotenv==0.21.0
+python-telegram-bot==13.15
+SQLAlchemy==1.4.44
