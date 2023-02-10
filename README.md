@@ -15,7 +15,7 @@ Telegram threat intelligence bot
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/vccsec/threatintel-bot.git
+git remote add origin https://github.com/hailehong95/threatintel-bot.git
 git branch -M main
 git push -uf origin main
 ```
